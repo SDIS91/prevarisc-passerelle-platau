@@ -44,7 +44,7 @@ Il est nécessaire d'appliquer un patch mineur sur l'applicatif Prevarisc avant 
 ### Configuration
 Afin d'utiliser la passerelle vous aurez besoin d'identifants [PISTE](https://piste.gouv.fr/) ainsi qu'un identifant Acteur Plat'AU. Naturellement, pour que la passerelle puisse se connecter à Prevarisc, elle aura besoin de s'authentifier sur la base de données.
 Voici un exemple d'un fichier JSON de configuration :
-```json
+```jsonc
 {
     "platau.options": {
         "PISTE_CLIENT_ID": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
@@ -61,7 +61,14 @@ Voici un exemple d'un fichier JSON de configuration :
         "PREVARISC_DB_PORT": 3306,
         "PREVARISC_DB_PLATAU_USER_ID": 0,
         "PREVARISC_PIECES_JOINTES_PATH": "xxxxxxxxxx"
-    }
+    },
+    // Les options syncplicity sont optionnelles et servent à téléverser une pièce dans Plat'AU
+    // Note : Si l'API Syncplicity est activée sur la même application qui contient les API Plat'AU,
+    // alors les client_id et client_secret seront identiques à vos paramètres dans platau.options
+    "syncplicity.options": {
+        "PISTE_CLIENT_ID": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+        "PISTE_CLIENT_SECRET": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+    },
 }
 ```
 
